@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -38,6 +39,11 @@ Route::middleware([
     Route::get('/admin', function () {
         return 'Halaman khusus admin';
     });
+});
+
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::put('/users/{id}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
 });
 
 // Route::get('/admin-test', function () {
