@@ -11,11 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
-                <div class="mt-4">
-                    <p>Login sebagai: <strong>{{ Auth::user()->role }}</strong></p>
-                </div>
             </div>
         </div>
     </div>
-
 </x-app-layout>

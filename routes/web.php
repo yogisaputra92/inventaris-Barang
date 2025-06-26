@@ -2,11 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\UserController;
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,33 +19,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Barang - semua user bisa lihat, admin bisa CRUD
 Route::middleware(['auth'])->group(function () {
     Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
+    Route::get('/barang/cetak/pdf', [BarangController::class, 'cetakPdf'])->name('barang.cetak.pdf');
 });
 
 Route::middleware(['auth', 'is_admin'])->group(function () {
-    Route::resource('/barang', BarangController::class)->except('index');
-})->name('barang');
-
-Route::get('/barang/cetak/pdf', [BarangController::class, 'cetakPdf'])->name('barang.cetak.pdf');
-
-
-Route::middleware([
-    RoleMiddleware::class . ':admin',
-])->group(function () {
-    Route::get('/admin', function () {
-        return 'Halaman khusus admin';
-    });
+    Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+    Route::get('/barang/{barang}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/{barang}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/{barang}', [BarangController::class, 'destroy'])->name('barang.destroy');
+    Route::get('/barang/{barang}', [BarangController::class, 'show'])->name('barang.show'); // optional
 });
 
+// Manajemen user (admin)
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::put('/users/{id}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
 });
-
-// Route::get('/admin-test', function () {
-//     return 'Halo Admin!';
-// })->middleware(['auth', 'is_admin']);
-
 
 require __DIR__.'/auth.php';

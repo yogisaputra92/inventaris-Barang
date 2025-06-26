@@ -22,7 +22,7 @@
                     </x-nav-link>
                 </div>
                 @auth
-                @if(Auth::user()->role === 'admin')
+                @if (Auth::user()->role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Kelola Pengguna') }}
