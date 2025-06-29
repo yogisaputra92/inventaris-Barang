@@ -4,22 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Barang extends Model
+class BarangKeluar extends Model
 {
 
     protected $fillable = [
+        'barang_id',
         'kode_barang',
         'nama_barang',
         'kategori',
-        'jumlah',
         'lokasi',
         'keterangan',
+        'jumlah',
+        'tujuan',
     ];
-    
-    public function barangKeluars()
+
+    public function barang()
     {
-        return $this->hasMany(BarangKeluar::class);
+        return $this->belongsTo(Barang::class);
     }
+
 }
-
-

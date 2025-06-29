@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BarangKeluarController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +48,12 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::put('/users/{id}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/barang-keluar', [BarangKeluarController::class, 'index'])->name('barang_keluar.index');
+    Route::get('/barang-keluar/create', [BarangKeluarController::class, 'create'])->name('barang_keluar.create');
+    Route::post('/barang-keluar', [BarangKeluarController::class, 'store'])->name('barang_keluar.store');
 });
 
 

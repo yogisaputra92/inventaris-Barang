@@ -11,8 +11,8 @@
     <div class="min-h-screen flex">
 
         <!-- Sidebar -->
-        <aside class="w-64 bg-gray-900 border-r shadow-md text-white font-bold">
-            <div class="shadow max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white font-bold text-center">
+        <aside class="w-64 bg-gray-900 border-r text-white font-bold">
+            <div class="max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white font-bold text-center">
                 Inventaris
             </div>
 
@@ -27,8 +27,11 @@
                 </a>
                 
                 <a href="{{ route('barang.index') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
-                    Management Barang
+                    Barang Masuk
                 </a>
+
+                <a href="{{ route('barang_keluar.index') }}" class="block px-3 py-2 hover:bg-gray-100 hover:text-gray-900">Barang Keluar</a>
+
                 
                 <a href="{{ route('users.index') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
                     Kelola Pengguna
