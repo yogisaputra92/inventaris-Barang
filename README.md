@@ -67,7 +67,7 @@ DB_PASSWORD=
 ### 3. Jalankan migrasi
 
 ```bash
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 ### 4. Jalankan server
@@ -90,6 +90,9 @@ npm run dev
 │   ├── create.blade.php  // Form tambah
 │   ├── edit.blade.php    // Form edit
 │   └── pdf.blade.php     // Laporan PDF
+├── resources/views/dashboard/
+│   ├── admin.blade.php   // Tampilan Dashboard admin
+│   └── user.blade.php  // Tampilan Dashboard user
 ├── routes/web.php
 ├── database/migrations/
 └── public/
@@ -99,7 +102,15 @@ npm run dev
 
 ## 📷 Tampilan Antarmuka
 
-> (Tambahkan screenshot antarmuka di sini)
+(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-28-47.png)
+
+(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-28-52.png)
+
+(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-10.png)
+
+(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-23.png)
+
+(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-40.png)
 
 ---
 
@@ -113,7 +124,7 @@ Aplikasi ini dikembangkan untuk keperluan pembelajaran dan tugas akhir UAS. Sila
 
 **Nama**: M Yogi Saputra
 **Kelas**: \[ 17.6B.25 ]
-**Mata Kuliah**: Web Programming
+**Mata Kuliah**: Web Programming ll
 
 ---
 
