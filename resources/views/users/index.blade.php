@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <div class="bg-gray-800 shadow max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight px-80">Kelola Pengguna</h1>
+    <div class="bg-white shadow max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-900 leading-tight ">Kelola Pengguna</h1>
     </div>
     <div class="max-w-4xl mx-auto mt-10">
 

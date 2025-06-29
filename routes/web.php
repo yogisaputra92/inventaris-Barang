@@ -4,14 +4,23 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = auth()->user();
+
+    return $user->role === 'admin'
+        ? redirect()->route('dashboard.admin')
+        : redirect()->route('dashboard.user');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'is_admin'])->get('/dashboard-admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
+Route::middleware(['auth'])->get('/dashboard-user', [DashboardController::class, 'user'])->name('dashboard.user');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,5 +48,6 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::put('/users/{id}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
 });
+
 
 require __DIR__.'/auth.php';
