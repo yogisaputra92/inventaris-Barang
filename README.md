@@ -102,15 +102,15 @@ npm run dev
 
 ## 📷 Tampilan Antarmuka
 
-(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-28-47.png)
+![dashboard-admin](https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-28-47.png)
 
-(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-28-52.png)
+![barang](https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-28-52.png)
 
-(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-10.png)
+![profile](https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-10.png)
 
-(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-23.png)
+![login](https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-23.png)
 
-(https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-40.png)
+![register](https://github.com/yogisaputra92/inventaris-Barang/blob/main/public/screenshots/Screenshot%20from%202025-06-29%2022-29-40.png)
 
 ---
 
