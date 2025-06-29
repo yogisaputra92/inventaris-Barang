@@ -6,13 +6,17 @@ Proyek ini merupakan tugas praktik UAS mata kuliah *Web Programming* yang dibuat
 
 ## ✨ Fitur Utama
 
-- 🔐 Autentikasi (Login & Register)
+- 🔐 Autentikasi & Registrasi dengan Role (Admin & User)
 - 👥 Role-based Access Control (Admin & User)
 - 📦 CRUD Barang (Create, Read, Update, Delete)
 - 🔍 Pencarian Barang (berdasarkan nama / kode)
 - 🏷️ Filter Barang berdasarkan Kategori
 - 🖨️ Cetak Laporan Barang dalam Format PDF
 - 🌈 Tampilan responsive menggunakan Tailwind CSS
+- 📤 Barang Keluar (pengurangan stok)
+- 📊 Statistik Dashboard (barang, user, barang hari ini)
+- 🕒 Histori update & barang keluar
+- 🧪 Dummy data via Seeder
 
 ---
 
@@ -22,6 +26,19 @@ Proyek ini merupakan tugas praktik UAS mata kuliah *Web Programming* yang dibuat
 |-------|------------------------------------------------|
 | Admin | CRUD Barang, Cetak PDF, Lihat Data             |
 | User  | Hanya bisa melihat daftar barang               |
+
+---
+
+### 👥 Role & Hak Akses
+
+| Fitur             | Admin | User |
+| ----------------- | :---: | :--: |
+| Dashboard         |   ✅   |   ✅  |
+| CRUD Barang       |   ✅   |   ❌  |
+| Lihat Barang      |   ✅   |   ✅  |
+| Barang Keluar     |   ✅   |   ✅  |
+| Manajemen User    |   ✅   |   ❌  |
+| Profil & Password |   ✅   |   ✅  |
 
 ---
 
@@ -81,21 +98,34 @@ npm run dev
 
 ---
 
+### 5. Akses login
+```bash
+Admin     : admin@gmail.com / password
+User Biasa: user@gmail.com  / password
+```
+
 ## 📁 Struktur Folder Penting
 
 ```
-├── app/Http/Controllers/BarangController.php
-├── resources/views/barang/
-│   ├── index.blade.php   // Tampil barang + filter
-│   ├── create.blade.php  // Form tambah
-│   ├── edit.blade.php    // Form edit
-│   └── pdf.blade.php     // Laporan PDF
-├── resources/views/dashboard/
-│   ├── admin.blade.php   // Tampilan Dashboard admin
-│   └── user.blade.php  // Tampilan Dashboard user
-├── routes/web.php
-├── database/migrations/
-└── public/
+app/
+├── Models/
+│   ├── Barang.php
+│   └── BarangKeluar.php
+├── Http/
+│   ├── Controllers/
+│   │   ├── BarangController.php
+│   │   ├── BarangKeluarController.php
+│   │   ├── DashboardController.php
+│   │   └── UserController.php
+resources/
+├── views/
+│   ├── barang/
+│   ├── barang_keluar/
+│   ├── dashboard/
+│   └── profile/
+routes/
+└── web.php
+
 ```
 
 ---
@@ -114,6 +144,14 @@ npm run dev
 
 ---
 
+✅ Dummy Data
+
+Kamu bisa menambahkan dummy data untuk barang lewat seeder:
+```bash
+php artisan db:seed --class=BarangSeeder
+```
+---
+
 ## 🧾 Lisensi
 
 Aplikasi ini dikembangkan untuk keperluan pembelajaran dan tugas akhir UAS. Silakan gunakan, modifikasi, dan kembangkan lebih lanjut.
@@ -127,5 +165,3 @@ Aplikasi ini dikembangkan untuk keperluan pembelajaran dan tugas akhir UAS. Sila
 **Mata Kuliah**: Web Programming ll
 
 ---
-
-```
