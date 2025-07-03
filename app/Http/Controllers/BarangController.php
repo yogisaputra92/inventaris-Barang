@@ -31,20 +31,20 @@ class BarangController extends Controller
     }
 
     public function cetakPdf(Request $request)
-{
-    $keyword = $request->input('search');
-    $filterKategori = $request->input('kategori');
+    {
+        $keyword = $request->input('search');
+        $filterKategori = $request->input('kategori');
 
-    $barangs = Barang::when($keyword, function ($query) use ($keyword) {
-        $query->where('nama_barang', 'like', "%{$keyword}%")
-              ->orWhere('kode_barang', 'like', "%{$keyword}%");
-    })->when($filterKategori, function ($query) use ($filterKategori) {
-        $query->where('kategori', $filterKategori);
-    })->latest()->get(); // ← semua data, tanpa paginate
+        $barangs = Barang::when($keyword, function ($query) use ($keyword) {
+            $query->where('nama_barang', 'like', "%{$keyword}%")
+                ->orWhere('kode_barang', 'like', "%{$keyword}%");
+        })->when($filterKategori, function ($query) use ($filterKategori) {
+            $query->where('kategori', $filterKategori);
+        })->latest()->get(); // ← semua data, tanpa paginate
 
-    $pdf = Pdf::loadView('barang.pdf', compact('barangs'));
-    return $pdf->stream('laporan-barang.pdf');
-}
+        $pdf = Pdf::loadView('barang.pdf', compact('barangs'));
+        return $pdf->stream('laporan-barang.pdf');
+    }
 
     /**
      * Show the form for creating a new resource.

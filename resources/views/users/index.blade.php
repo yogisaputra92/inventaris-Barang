@@ -14,7 +14,7 @@
     <div class="bg-white shadow max-w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-900 leading-tight ">Kelola Pengguna</h1>
     </div>
-    <div class="max-w-4xl mx-auto mt-10">
+    <div class="max-w-4xl mx-auto mt-10 overflow-x-auto">
 
         @if (session('success'))
         <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
@@ -53,7 +53,7 @@
                                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                             </select>
                             <button type="submit">
-                                <p class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">Ubah</p>
+                                <p class="bg-gray-900 hover:bg-gray-800 text-white px-3 py-1 rounded text-sm font-semibold">Ubah</p>
                             </button>
                         </form>
                     </td>

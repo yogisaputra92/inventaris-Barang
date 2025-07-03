@@ -25,13 +25,14 @@
                 <a href="{{ route('dashboard.admin') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
                     Dashboard
                 </a>
+
+                <a href="{{ route('produk.index') }}" class="block px-3 py-2 hover:bg-gray-100 hover:text-gray-900">Stok Barang</a>
                 
                 <a href="{{ route('barang.index') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
                     Barang Masuk
                 </a>
 
                 <a href="{{ route('barang_keluar.index') }}" class="block px-3 py-2 hover:bg-gray-100 hover:text-gray-900">Barang Keluar</a>
-
                 
                 <a href="{{ route('users.index') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
                     Kelola Pengguna
@@ -43,10 +44,16 @@
                 <a href="{{ route('dashboard.user') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
                     Dashboard
                 </a>
+
+                <a href="{{ route('produk.index') }}" class="block px-4 py-2 hover:bg-gray-200">Stok Barang</a>
+
                 {{-- tambahkan menu khusus user di sini jika ada --}}
                 <a href="{{ route('barang.index') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
-                    Management Barang
+                    Barang Masuk
                 </a>
+
+                <a href="{{ route('barang_keluar.index') }}" class="block px-3 py-2 hover:bg-gray-100 hover:text-gray-900">Barang Keluar</a>
+
                 @endif
 
                 <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">

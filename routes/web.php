@@ -6,6 +6,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,6 +56,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/barang-keluar/create', [BarangKeluarController::class, 'create'])->name('barang_keluar.create');
     Route::post('/barang-keluar', [BarangKeluarController::class, 'store'])->name('barang_keluar.store');
 });
+
+Route::middleware(['auth'])->get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+
+// search & filter
+Route::middleware(['auth'])->get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+
+
 
 
 require __DIR__.'/auth.php';

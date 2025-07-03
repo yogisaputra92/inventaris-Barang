@@ -29,7 +29,7 @@
             @auth
             @if (Auth::user()->role === 'admin')
             <a href="{{ route('barang_keluar.create') }}"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
+                class="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded shadow font-semibold">
                 + Tambah Barang Keluar
             </a>
             @endif
@@ -37,9 +37,9 @@
         </div>
     
         <div class="overflow-x-auto border border-solid">
-            <table class="min-w-full bg-white shadow-md rounded">
+            <table class="min-w-full bg-white shadow-md rounded text-center">
                 <thead>
-                    <tr class="bg-gray-200">
+                    <tr class="bg-gray-100">
                         <th class="p-2 border">Kode</th>
                         <th class="p-2 border">Nama</th>
                         <th class="p-2 border">Kategori</th>

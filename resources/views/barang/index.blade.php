@@ -28,13 +28,13 @@
             @auth
             @if (Auth::user()->role === 'admin')
             <a href="{{ route('barang.create') }}"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
+                class="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded shadow font-semibold">
                 + Tambah Barang
             </a>
             @endif
             @endauth
             <form action="{{ route('barang.index') }}" method="GET" class="flex items-center gap-2">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari barang..."
+                <!-- <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari barang..."
                     class="border border-gray-300 rounded px-3 py-2" />
 
                 <select name="kategori" class="border border-gray-300 rounded px-8 py-2">
@@ -44,15 +44,15 @@
                         {{ $kategori }}
                     </option>
                     @endforeach
-                </select>
+                </select> -->
 
-                <button type="submit">
+                <!-- <button type="submit">
                    <p class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-gray-700 "> Cari / Filter</p>
                 </button>
 
                 <a href="{{ route('barang.index') }}">
                     <p class="text-white hover:underline ml-2 bg-red-700 px-4 py-2 rounded shadow">Reset Filter</p>
-                </a>
+                </a> -->
 
                 <a href="{{ route('barang.cetak.pdf', request()->query()) }}" target="_blank">
                     <p class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow">🖨️ Cetak PDF</p>
