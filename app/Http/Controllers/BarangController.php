@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\MasterBarang;
+
 
 class BarangController extends Controller
 {
@@ -51,7 +53,11 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('barang.create');
+        // return view('barang.create');
+
+        $barangs = \App\Models\Barang::all();
+        return view('barang.create', compact('barangs'));
+
     }
 
     /**

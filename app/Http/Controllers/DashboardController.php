@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\BarangKeluar;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon; // tambahkan di bagian atas
@@ -14,6 +15,7 @@ class DashboardController extends Controller
     {
         $totalBarang = \App\Models\Barang::count();
         $totalUser = \App\Models\User::count();
+        $totalBarangKeluar = BarangKeluar::sum('jumlah'); // total seluruh barang keluar
 
         // Hitung barang yang dibuat hari ini
         // $barangHariIni = \App\Models\Barang::whereDate('created_at', Carbon::today())->count();
@@ -32,13 +34,14 @@ class DashboardController extends Controller
         // Histori update 5 terakhir
         $recentUpdates = Barang::orderBy('updated_at', 'desc')->take(5)->get();
 
-        return view('dashboard.admin', compact('totalBarang', 'totalUser', 'barangHariIni', 'grafikBarang', 'recentUpdates'));
+        return view('dashboard.admin', compact('totalBarang', 'totalUser','barangHariIni','grafikBarang','totalBarangKeluar', 'recentUpdates'));
 
     }
     public function user()
     {
         $totalBarang = \App\Models\Barang::count();
         $totalUser = \App\Models\User::count();
+        $totalBarangKeluar = BarangKeluar::sum('jumlah'); // total seluruh barang keluar
 
         // Hitung barang yang dibuat hari ini
         $barangHariIni = Barang::whereDate('created_at', Carbon::today())->count();
@@ -55,6 +58,6 @@ class DashboardController extends Controller
         // Histori update 5 terakhir
         $recentUpdates = Barang::orderBy('updated_at', 'desc')->take(5)->get();
 
-        return view('dashboard.admin', compact('totalBarang', 'totalUser', 'barangHariIni', 'grafikBarang', 'recentUpdates'));
+        return view('dashboard.admin', compact('totalBarang', 'totalUser', 'barangHariIni', 'grafikBarang','totalBarangKeluar', 'recentUpdates'));
     }
 }

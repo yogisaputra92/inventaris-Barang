@@ -92,16 +92,52 @@
                     Dashboard
                 </a>
 
-                <a href="{{ route('produk.index') }}" class="block px-4 py-2 hover:bg-gray-200 rounded">Stok Barang</a>
+                <a href="{{ route('produk.index') }}" class="block px-3 py-2 hover:bg-gray-200 rounded">Stok Barang</a>
 
                 {{-- tambahkan menu khusus user di sini jika ada --}}
-                <a href="{{ route('barang.index') }}"
-                    class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-gray-900">
-                    Barang Masuk
-                </a>
+                <!-- barang -->
+                <div class="dropdown relative" x-data="{ open: false }">
+                    <a @click="open = !open" class="block hover:bg-gray-100 hover:text-gray-900 px-3 py-2">
+                        Management Barang
+                    </a>
 
-                <a href="{{ route('barang_keluar.index') }}"
-                    class="block px-3 py-2 hover:bg-gray-100 hover:text-gray-900 rounded">Barang Keluar</a>
+                    <ul class="space-y-1 mt-8" :class="{ 'block': open, 'hidden': !open }">
+                        <li>
+                            <a href="{{ route('barang.index') }}"
+                                class="block px-4 py-2 rounded hover:bg-gray-100 text-sm hover:text-gray-900 text-white">
+                                📥 Barang Masuk
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('barang_keluar.index') }}"
+                                class="block px-4 py-2 rounded hover:bg-gray-100 text-sm hover:text-gray-900 text-white">
+                                📤 Barang Keluar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- laporan -->
+                <div class="dropdown relative" x-data="{ open: false }">
+                    <a @click="open = !open" class="block hover:bg-gray-100 hover:text-gray-900 px-3 py-2">
+                        Laporan
+                    </a>
+
+                    <ul class="space-y-1 mt-8" :class="{ 'block': open, 'hidden': !open }">
+                        <li>
+                            <a href="{{ route('laporan.barangMasuk') }}"
+                                class="block px-4 py-2 rounded hover:bg-gray-100 text-sm hover:text-gray-900 text-white">
+                                📥 Barang Masuk
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('laporan.barangKeluar') }}"
+                                class="block px-4 py-2 rounded hover:bg-gray-100 text-sm hover:text-gray-900 text-white">
+                                📤 Barang Keluar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
                 @endif
 

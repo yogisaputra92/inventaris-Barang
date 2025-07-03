@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -30,9 +29,14 @@
             </div>
             <div class="bg-white shadow p-6 rounded-lg text-center">
                 <p class="text-gray-600">Barang Masuk Hari Ini</p>
-                <p class="text-3xl font-bold text-orange-500">{{ $barangHariIni }}</p>
+                <p class="text-3xl font-bold text-green-500">{{ $barangHariIni }}</p>
             </div>
-            
+            <!-- Total Barang Keluar -->
+            <div class="bg-white shadow p-6 rounded-lg text-center">
+                <p class="text-gray-600">Total Barang Keluar</p>
+                <p class="text-3xl font-bold text-red-500">{{ $totalBarangKeluar }}</p>
+            </div>
+
             {{-- Tambahkan statistik lain jika ada --}}
         </div>
         <div class="overflow-x-auto border border-solid">
@@ -60,43 +64,46 @@
                         <td class="py-2 px-4">{{ $barang->lokasi }}</td>
                         <td class="py-2 px-4">{{ $barang->keterangan }}</td>
                         <td>
-                            <span class="text-sm text-gray-500">(update: {{ $barang->updated_at->diffForHumans() }})</span>
+                            <span class="text-sm text-gray-500">(update:
+                                {{ $barang->updated_at->diffForHumans() }})</span>
                         </td>
                     </tr>
-                @empty
+                    @empty
                     <tr>
                         <td colspan="7" class="py-4 px-4 text-center text-gray-500">Data barang belum tersedia.</td>
                     </tr>
-                @endforelse
+                    @endforelse
                 </tbody>
-                
+
             </table>
         </div>
     </div>
 </body>
 
 <script>
-    const ctx = document.getElementById('barangChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: @json($grafikBarang['labels']),
-            datasets: [{
-                label: 'Barang Masuk',
-                data: @json($grafikBarang['data']),
-                backgroundColor: 'rgba(59, 130, 246, 0.7)'
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: { stepSize: 1 }
+const ctx = document.getElementById('barangChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: @json($grafikBarang['labels']),
+        datasets: [{
+            label: 'Barang Masuk',
+            data: @json($grafikBarang['data']),
+            backgroundColor: 'rgba(59, 130, 246, 0.7)'
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
                 }
             }
         }
-    });
+    }
+});
 </script>
 
 </html>

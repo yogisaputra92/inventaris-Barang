@@ -10,8 +10,8 @@ class BarangKeluarController extends Controller
 {
     public function index()
     {
-        $barangKeluars = BarangKeluar::with('barang')->latest()->get();
-        return view('barang_keluar.index', compact('barangKeluars'));
+        $barangs = \App\Models\Barang::all();
+        return view('barang_keluar.create', compact('barangs'));
     }
 
     public function create()
