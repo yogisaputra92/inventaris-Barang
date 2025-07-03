@@ -6,6 +6,8 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\MasterBarang;
+use App\Models\BarangMasuk;
+
 
 
 class BarangController extends Controller
@@ -65,17 +67,44 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'kode_barang' => 'required|unique:barangs',
-            'nama_barang' => 'required',
-            'kategori' => 'required',
-            'jumlah' => 'required|integer',
-            'lokasi' => 'required',
-            'keterangan' => 'required',
-        ]);
+        // $request->validate([
+        //     'kode_barang' => 'required|unique:barangs',
+        //     'nama_barang' => 'required',
+        //     'kategori' => 'required',
+        //     'jumlah' => 'required|integer',
+        //     'lokasi' => 'required',
+        //     'keterangan' => 'required',
+        // ]);
 
-        Barang::create($request->all());
-        return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan.');
+        // Barang::create($request->all());
+        // return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan.');
+
+        $request->validate([
+            'kode_barang' => 'required|exists:barangs,kode_barang',
+            'jumlah' => 'required|integer|min:1',
+            'keterangan' => 'nullable|string',
+        ]);
+    
+        // Ambil barang berdasarkan kode_barang
+        $barang = \App\Models\Barang::where('kode_barang', $request->kode_barang)->first();
+    
+        if ($barang) {
+            // Tambahkan stok barang
+            $barang->jumlah += $request->jumlah;
+            $barang->save();
+        }
+    
+        // Simpan log barang masuk
+        \App\Models\BarangMasuk::create([
+            'kode_barang' => $barang->kode_barang,
+            'nama_barang' => $barang->nama_barang,
+            'kategori' => $barang->kategori,
+            'lokasi' => $barang->lokasi,
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
+        ]);
+    
+        return redirect()->route('barang.index')->with('success', 'Stok barang berhasil ditambahkan.');
     }
 
     /**

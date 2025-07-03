@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class BarangKeluar extends Model
+
+class BarangMasuk extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'kode_barang',
@@ -14,12 +17,5 @@ class BarangKeluar extends Model
         'lokasi',
         'jumlah',
         'keterangan',
-        'tujuan',
     ];
-
-    public function barang()
-    {
-        return $this->belongsTo(Barang::class);
-    }
-
 }

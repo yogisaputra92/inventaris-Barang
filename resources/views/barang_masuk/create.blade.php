@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 <div class="max-w-xl mx-auto mt-10 bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold mb-6">Tambah Barang Keluar</h1>
+    <h1 class="text-2xl font-bold mb-6">Tambah Barang</h1>
 
     @if ($errors->any())
     <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
@@ -49,9 +49,9 @@
             <input type="text" id="lokasi" name="lokasi" class="w-full border rounded px-3 py-2" readonly>
         </div>
 
-        <!-- Jumlah Keluar -->
+        <!-- Jumlah -->
         <div class="mb-4">
-            <label for="jumlah_keluar" class="block font-medium">Jumlah Keluar</label>
+            <label for="jumlah" class="block font-medium">Jumlah</label>
             <input type="number" name="jumlah" class="w-full border rounded px-3 py-2" required>
         </div>
 
@@ -61,19 +61,15 @@
             <textarea name="keterangan" class="w-full border rounded px-3 py-2"></textarea>
         </div>
 
-        <!-- Tujuan
-        <div class="mb-4">
-            <label for="tujuan" class="block font-medium">Tujuan</label>
-            <input type="text" name="tujuan" class="w-full border rounded px-3 py-2" required>
-        </div> -->
-
         <button type="submit" class="dark:bg-gray-900 text-white px-4 py-2 rounded">Simpan</button>
     </form>
 
     <script>
+    // Deklarasikan data barang satu kali
     const barangData = @json($barangs->keyBy('kode_barang'));
 
-    document.getElementById('kode_barang').addEventListener('change', function() {
+    // Event ketika kode_barang dipilih
+    document.getElementById('kode_barang').addEventListener('change', function () {
         const kode = this.value;
         const data = barangData[kode];
 
@@ -81,7 +77,9 @@
         document.getElementById('kategori').value = data ? data.kategori : '';
         document.getElementById('lokasi').value = data ? data.lokasi : '';
     });
-    </script>
+</script>
+
 
 </div>
+
 @endsection

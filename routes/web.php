@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\BarangMasukController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,6 +73,14 @@ Route::middleware(['auth'])->prefix('laporan')->group(function () {
     Route::get('/barang-keluar', [LaporanController::class, 'barangKeluar'])->name('laporan.barangKeluar');
     Route::get('/barang-keluar/pdf', [LaporanController::class, 'barangKeluarPdf'])->name('laporan.barangKeluar.pdf');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/barang-masuk/create', [BarangMasukController::class, 'create'])->name('barang-masuk.create');
+    Route::post('/barang-masuk', [BarangMasukController::class, 'store'])->name('barang-masuk.store');
+    Route::get('/barang-masuk', [BarangMasukController::class, 'index'])->name('barang_masuk.index');
+});
+
+
 
 
 
