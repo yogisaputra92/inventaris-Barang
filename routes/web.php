@@ -62,6 +62,18 @@ Route::middleware(['auth'])->get('/produk', [ProdukController::class, 'index'])-
 // search & filter
 Route::middleware(['auth'])->get('/produk', [ProdukController::class, 'index'])->name('produk.index');
 
+// laporan barang masuk & keluar
+use App\Http\Controllers\LaporanController;
+
+Route::middleware(['auth'])->prefix('laporan')->group(function () {
+    Route::get('/barang-masuk', [LaporanController::class, 'barangMasuk'])->name('laporan.barangMasuk');
+    Route::get('/barang-masuk/pdf', [LaporanController::class, 'barangMasukPdf'])->name('laporan.barangMasuk.pdf');
+
+    Route::get('/barang-keluar', [LaporanController::class, 'barangKeluar'])->name('laporan.barangKeluar');
+    Route::get('/barang-keluar/pdf', [LaporanController::class, 'barangKeluarPdf'])->name('laporan.barangKeluar.pdf');
+});
+
+
 
 
 
